@@ -1,0 +1,263 @@
+Unix users commands
+These commands allow you to get basic information about Unix users in your environment.
+whoami – show your username
+id – print user identity
+groups – show which groups user belongs to
+passwd – change user password
+who – find out who is logged into the system
+last – show history of logins into the system
+
+  ###My work
+  
+  
+user@pranay-kumar:~$ id
+uid=1000(user) gid=1000(user) groups=1000(user),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),120(lpadmin),132(lxd),133(sambashare)
+user@pranay-kumar:~$ whoami
+user
+user@pranay-kumar:~$ groups
+user adm cdrom sudo dip plugdev lpadmin lxd sambashare
+user@pranay-kumar:~$ who
+user     tty2         2024-04-02 08:50 (tty2)
+user@pranay-kumar:~$ last
+user     tty2         tty2             Tue Apr  2 08:50   still logged in
+reboot   system boot  6.5.0-25-generic Tue Apr  2 08:50   still running
+user     tty2         tty2             Mon Apr  1 23:25 - down   (00:02)
+reboot   system boot  6.5.0-25-generic Mon Apr  1 23:24 - 23:27  (00:02)
+user     tty2         tty2             Mon Apr  1 20:42 - down   (01:51)
+reboot   system boot  6.5.0-25-generic Mon Apr  1 20:42 - 22:33  (01:51)
+user     tty2         tty2             Mon Apr  1 15:25 - down   (01:04)
+wtmp begins Wed Mar 16 07:32:23 2022
+
+
+Unix file operations
+Navigating filesystem and managing files and access permissions:
+nslookup google.com – server address
+cp – copy files (work in progress)
+rm – remove files and directories (work in progress)
+mv – rename or move files and directories to another location
+echo – “hello world”
+chown – change file/directory ownership
+Unix directory management commands
+Navigating filesystems and managing directories:
+•cd – change directory
+•pwd – confirm current directory
+•mkdir – make new directory
+•rmdir – remove directories in Unix
+
+
+   #####My Work###
+  
+user@pranay-kumar:~$ mkdir workshop
+mkdir: cannot create directory ‘workshop’: File exists
+user@pranay-kumar:~$ mkdir workshopit
+user@pranay-kumar:~$ cd workshopit
+user@pranay-kumar:~/workshopit$ touch work1.txt
+user@pranay-kumar:~/workshopit$ cat> work1.txt
+hello world
+hwllo rgukt
+It workshop
+user@pranay-kumar:~/workshopit$ touch work2.txt
+user@pranay-kumar:~/workshopit$ cp work1.txt work2.txt
+user@pranay-kumar:~/workshopit$ mv work1 work2
+mv: cannot stat 'work1': No such file or directory
+user@pranay-kumar:~/workshopit$ mkdir move
+user@pranay-kumar:~/workshopit$ mv work1 move
+mv: cannot stat 'work1': No such file or directory
+user@pranay-kumar:~/workshopit$ mv work1.txt move
+user@pranay-kumar:~/workshopit$ rm work1.txt
+rm: cannot remove 'work1.txt': No such file or directory
+user@pranay-kumar:~/workshopit$ rm work2.txt
+user@pranay-kumar:~/workshopit$ ls
+move
+user@pranay-kumar:~/workshopit$ cd move
+user@pranay-kumar:~/workshopit/move$ ls
+work1.txt
+user@pranay-kumar:~/workshopit/move$ rmdir workshopit
+rmdir: failed to remove 'workshopit': No such file or directory
+user@pranay-kumar:~/workshopit/move$ mkdir pranay 
+user@pranay-kumar:~/workshopit/move$ ls
+pranay  work1.txt
+user@pranay-kumar:~/workshopit/move$ rmdir pranay
+user@pranay-kumar:~/workshopit/move$ ls
+work1.txt
+user@pranay-kumar:~/workshopit/move$ pwd
+/home/user/workshopit/move
+user@pranay-kumar:~/workshopit/move$ which -a cat
+/usr/bin/cat
+/bin/cat
+
+
+
+
+                      Week 2  
+                      
+Grep command in Unix:
+
+-c: This prints only a count of the lines that match a pattern
+-h: Display the matched lines, but do not display the filenames.
+–i: Ignores, case for matching
+-l: Displays list of a filenames only.
+-n: Display the matched lines and their line numbers.
+-v: This prints out all the lines that do not matches the pattern
+-e : Specifies expression with this option. Can use multiple times.
+-f file: Takes patterns from file, one per line.
+-o :Print only the matched parts of a matching line, with each such part on a separate output line.
+
+
+   ######MyWork#####                      
+   
+
+ser@pranay-kumar:~/workshopit/move$ grep -o "hello" work1.txt
+hello
+user@pranay-kumar:~/workshopit/move$ grep -c "hello" work1.txt
+1
+user@pranay-kumar:~/workshopit/move$ grep -h "hello" work1.txt
+hello world
+user@pranay-kumar:~/workshopit/move$ grep -i "hello" work1.txt
+hello world
+user@pranay-kumar:~/workshopit/move$ grep -l "hello" work1.txt
+work1.txt
+user@pranay-kumar:~/workshopit/move$ grep -n "hello" work1.txt
+1:hello world
+user@pranay-kumar:~/workshopit/move$ grep -v "hello" work1.txt
+hwllo rgukt
+It workshop
+user@pranay-kumar:~/workshopit/move$ grep -e "hello" work1.txt
+hello world
+
+
+Sort Command:
+
+-o: Specifies an output file for the sorted data.
+Functionally equivalent to redirecting output to a file.
+-r: Sorts data in reverse order (descending).
+-n: Sorts a file numerically (interprets data as numbers).
+-nr: Sorts a file with numeric data in reverse order.
+Combines -n and -r options.
+-k: Sorts a table based on a specific column number.
+-c: Checks if the file is already sorted and reports any
+disorder.
+-u: Sorts and removes duplicate lines, providing a unique
+sorted list.
+-M: Sorts by month names.
+
+  ###Mywork###
+  
+
+user@pranay-kumar:~/workshopit/move$ touch geekfile.txt
+user@pranay-kumar:~/workshopit/move$ cat> geekfile.txt
+january
+february
+march
+may
+june
+august
+april
+december
+november
+october
+july
+september
+^C
+user@pranay-kumar:~/workshopit/move$ cat geekfile.txt
+january
+february
+march
+may
+june
+august
+april
+december
+november
+october
+july
+september
+user@pranay-kumar:~/workshopit/move$ sort geekfile.txt
+april
+august
+december
+february
+january
+july
+june
+march
+may
+november
+october
+september
+user@pranay-kumar:~/workshopit/move$ sort -r geekfile.txt
+september
+october
+november
+may
+march
+june
+july
+january
+february
+december
+august
+april
+user@pranay-kumar:~/workshopit/move$ sort -m geekfile.txt
+january
+february
+march
+may
+june
+august
+april
+december
+november
+october
+july
+september
+user@pranay-kumar:~/workshopit/move$ sort -c geekfile.txt
+sort: geekfile.txt:2: disorder: february
+user@pranay-kumar:~/workshopit/move$ sort  geekfile.txt
+april
+august
+december
+february
+january
+july
+june
+march
+may
+november
+october
+september
+user@pranay-kumar:~/workshopit/move$ sort -c geekfile.txt
+sort: geekfile.txt:2: disorder: february
+user@pranay-kumar:~/workshopit/move$ 
+
+AWK command in Unix:
+
+mywork
+
+user@pranay-kumar:~/workshopit/move$ cat> geekfile.txt
+b201104
+b201136
+b200003
+user@pranay-kumar:~/workshopit/move$ awk '{print} geekfile.txt
+> ^C
+user@pranay-kumar:~/workshopit/move$ awk '{print}' geekfile.txt
+b201104
+b201136
+b200003
+user@pranay-kumar:~/workshopit/move$ awk '{print NR,$0}' geekfile.txt
+1 b201104
+2 b201136
+3 b200003
+user@pranay-kumar:~/workshopit/move$ awk '{print $2}' geekfile.txt
+
+
+
+shutdown command:
+
+$ shutdown -H
+$shutdown -P
+$ shutdown -r now
+$ shutdown -r +5
+$ sudo shutdown 15:00
+$ sudo shutdown +10
+$ sudo shutdown -c
